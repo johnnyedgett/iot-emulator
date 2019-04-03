@@ -1,10 +1,12 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import NewDeviceScreen from '../screens/Device/NewDeviceScreen'
+import NewSensorScreen from '../screens/Sensor/NewSensorScreen'
 
 import MainTabNavigator from './MainTabNavigator';
 
 export default createAppContainer(createSwitchNavigator({
-  // You could add another route here for authentication.
-  // Read more at https://reactnavigation.org/docs/en/auth-flow.html
+  NewDeviceScreen: {screen: NewDeviceScreen},
+  NewSensorScreen: {screen: NewSensorScreen},
   Main: MainTabNavigator,
 }));

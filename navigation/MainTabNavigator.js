@@ -3,10 +3,11 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/Home/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import NewDeviceScreen from '../screens/NewDeviceScreen';
+import DevicesScreen from '../screens/Device/DeviceScreen';
+import SensorsScreen from '../screens/Sensor/SensorsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -54,12 +55,12 @@ SettingsStack.navigationOptions = {
   ),
 };
 
-const NewDeviceStack = createStackNavigator({
-  NewDevice: NewDeviceScreen
+const DevicesStack = createStackNavigator({
+  Devices: DevicesScreen
 })
 
-NewDeviceStack.navigationOptions = {
-  tabBarLabel: 'Add Device',
+DevicesStack.navigationOptions = {
+  tabBarLabel: 'Manage Devices',
   tabBarIcon: ({ focused }) => {
     <TabBarIcon
       focused={focused}
@@ -68,9 +69,32 @@ NewDeviceStack.navigationOptions = {
   }
 }
 
+const SensorsStack = createStackNavigator({
+  Sensors: SensorsScreen
+})
+
+SensorsStack.navigationOptions = {
+  tabBarLabel: 'Manage Sensors',
+  tabBarIcon: ({ focused }) => {
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      />
+  }
+}
+
+// SensorsStack.navigationOptions = {
+//   tabBarLabel: 'Manage Sensors',
+//   tabBarIcon: ({ focused }) => {
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+//       />
+//   }
+// }
+
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
-  NewDeviceStack
+  DevicesStack,
+  SensorsStack
 });

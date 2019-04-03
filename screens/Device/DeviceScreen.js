@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, View, StyleSheet } from 'react-native'
 import t from 'tcomb-form-native'
+import {AsyncStorage} from 'react-native';
+
 const Form = t.form.Form;
 const Device = t.struct({
     'Device Name': t.String,
@@ -10,9 +12,9 @@ const Device = t.struct({
     'Publish to':t.String,
   });
 
-export default class NewDeviceScreen extends React.Component {
+export default class DevicesScreen extends React.Component {
     static navigationOptions = {
-        title: 'New Device',
+        title: 'Manage Devices',
     };
     handleSubmit = () => {
         const formValue = this._form.getValue();
